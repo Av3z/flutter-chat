@@ -3,7 +3,8 @@ import 'package:flutter_chat/src/components/text_button_custom.dart';
 import 'package:flutter_chat/src/components/text_field_custom.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+  final void Function()? onTap;
+  const RegisterPage({super.key, required this.onTap});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -18,6 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       body: SafeArea(
           child: Center(
         child: Container(
@@ -53,7 +55,24 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(
                 height: 40,
               ),
-              TextButtonCustom(onTap: () {}, text: 'Login')
+              TextButtonCustom(onTap: () {}, text: 'Login'),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Already a member? ',
+                  ),
+                  GestureDetector(
+                      onTap: widget.onTap,
+                      child: const Text(
+                        'Login now',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
+                ],
+              ),
             ],
           ),
         ),
