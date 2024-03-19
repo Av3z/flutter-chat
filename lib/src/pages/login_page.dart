@@ -3,7 +3,8 @@ import 'package:flutter_chat/src/components/text_button_custom.dart';
 import 'package:flutter_chat/src/components/text_field_custom.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  final void Function()? onTap;
+  const LoginPage({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,24 @@ class LoginPage extends StatelessWidget {
               const SizedBox(
                 height: 40,
               ),
-              TextButtonCustom(onTap: () {}, text: 'Login')
+              TextButtonCustom(onTap: () {}, text: 'Login'),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Not a member? ',
+                  ),
+                  GestureDetector(
+                      onTap: onTap,
+                      child: const Text(
+                        'Register now',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
+                ],
+              ),
             ],
           ),
         ),
