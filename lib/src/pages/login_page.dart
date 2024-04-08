@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/src/components/text_button_custom.dart';
 import 'package:flutter_chat/src/components/text_field_custom.dart';
+import 'package:flutter_chat/src/services/auth/auth_service.dart';
 
 class LoginPage extends StatelessWidget {
   final void Function()? onTap;
@@ -10,6 +11,11 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController passwordController = TextEditingController();
     TextEditingController emailController = TextEditingController();
+    final AuthService _authService = AuthService();
+
+    void sigIn() {
+      _authService.sigInUser(emailController.text, passwordController.text);
+    }
 
     return Scaffold(
       backgroundColor: Colors.grey[300],
@@ -41,7 +47,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(
                 height: 40,
               ),
-              TextButtonCustom(onTap: () {}, text: 'Login'),
+              TextButtonCustom(onTap: sigIn, text: 'Login'),
               const SizedBox(
                 height: 10,
               ),
