@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/src/components/text_button_custom.dart';
 import 'package:flutter_chat/src/components/text_field_custom.dart';
+import 'package:flutter_chat/src/services/auth/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
@@ -15,6 +16,12 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+
+  final AuthService _authService = AuthService();
+
+  void signUp() {
+    _authService.createUser(emailController.text, passwordController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +62,7 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(
                 height: 40,
               ),
-              TextButtonCustom(onTap: () {}, text: 'Login'),
+              TextButtonCustom(onTap: signUp, text: 'Login'),
               const SizedBox(
                 height: 10,
               ),
