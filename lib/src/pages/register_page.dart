@@ -43,21 +43,21 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               TextFieldCustom(
                   obscureText: false,
-                  hintText: 'email',
+                  hintText: 'Email',
                   controller: emailController),
               const SizedBox(
                 height: 10,
               ),
               TextFieldCustom(
                   obscureText: true,
-                  hintText: 'password',
+                  hintText: 'Password',
                   controller: passwordController),
               const SizedBox(
                 height: 10,
               ),
               TextFieldCustom(
                   obscureText: true,
-                  hintText: 'confirm password',
+                  hintText: 'Confirm password',
                   controller: confirmPasswordController),
               const SizedBox(
                 height: 40,
